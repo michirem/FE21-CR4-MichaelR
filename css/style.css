@@ -61,6 +61,15 @@ img {
   margin-top: auto;
 }
 
+.likeImg {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 5px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
 .likeBtn {
   color: white;
 }

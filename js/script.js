@@ -13,9 +13,10 @@ const containerBuilder = (containerType, classes, array_index, id, output_target
 };
 
 // function to build elements with text
-const elementBuilder = (elementType, classes, content, output_target) => {
+const elementBuilder = (elementType, classes, content, id, array_index, output_target) => {
     let elementT = document.createElement(elementType); // create element type
     elementT.className = classes; // assign classes
+    elementT.setAttribute("id", id + [array_index]);
     let elementContent = document.createTextNode(content); // create text node
     elementT.appendChild(elementContent); // append text node
     console.log("Element " + elementType + " built successfully");
@@ -27,9 +28,31 @@ const imgBuilder = (src, classes, output_target) => {
     let newImg = document.createElement("img");
     newImg.className = classes;
     newImg.src = src;
+    newImg.alt = "image";
     console.log(newImg);
     console.log("Img built successfully");
     document.getElementById(output_target).appendChild(newImg);
+};
+
+// function to build button
+const btnBuilder = (classes, content, id, array_index, output_target) => {
+    let button = document.createElement("button"); // create element type
+    button.className = classes; // assign classes
+    button.setAttribute("id", id + [array_index]);
+    let buttonContent = document.createTextNode(content); // create text node
+    button.appendChild(buttonContent); // append text node
+    console.log("Button built successfully");
+    document.getElementById(output_target).appendChild(button);
+};
+
+// like button function
+const increaseLikes = elementId => {
+    let counter = document.getElementById(elementId);
+    let numberOfLikes = parseInt(counter.innerHTML);
+    numberOfLikes++;
+    console.log(numberOfLikes);
+    counter.innerHTML = numberOfLikes;
+    console.log(elementId + " activated")
 };
 
 // function to build movie gallery
@@ -42,31 +65,48 @@ const movieGallery = array => {
         let mLikes = array[i].likes;
         const appendix = () => {
             // new movie div
-            containerBuilder("div", "col row my-2", i, "movie", "output");
+            // Arguments: containerType, classes, array_index, id, output_target
+            containerBuilder("div", "col row my-2 bg-dark", i, "movie", "output");
             
             // new movie img
+            // Arguments: src, classes, output_target
             imgBuilder(`${mImage}`, "col-6", "movie" + i);
 
             // new info div
+            // Arguments: containerType, classes, array_index, id, output_target
             containerBuilder("div", "col-6 d-flex flex-column px-0", i, "movieDetails", "movie" + i);
 
             // movie name in info div
-            elementBuilder("h2", "text-wrap", mName, "movieDetails" + i);
+            // Arguments: elementType, classes, content, id, array_index, output_target
+            elementBuilder("h2", " ", mName, "movieName", i, "movieDetails" + i);
 
             // movie genre in info div
-            elementBuilder("h4", " ", mGenre, "movieDetails" + i);
+            // Arguments: elementType, classes, content, id, array_index, output_target
+            elementBuilder("h4", " ", mGenre, "movieGenre", i, "movieDetails" + i);
 
             // movie description in info div
-            elementBuilder("p", " ", mDescription, "movieDetails" + i);
+            // Arguments: elementType, classes, content, id, array_index, output_target
+            elementBuilder("p", " ", mDescription, "movieDescription", i, "movieDetails" + i);
   
             // build container for likes
+            // Arguments: containerType, classes, array_index, id, output_target
             containerBuilder("div", "likeSection d-flex flex-row justify-content-evenly", i, "likeContainer", "movieDetails" + i)
 
             // movie like button in container for likes
-            elementBuilder("button", "button likeBtn mx-3", "Like", "likeContainer" + i);
+            btnBuilder("button likeBtn mx-3", "Like", "likeButton", i,  "likeContainer" + i);
+
+            // like icon in container for likes
+            // Arguments: src, classes, output_target
+            imgBuilder("../img/thumbup.png", "likeImg", "likeContainer" + i);
 
             //movie likes in container for likes
-            elementBuilder("span", "likes mx-3", mLikes, "likeContainer" + i)
+            // Arguments: elementType, classes, content, id, array_index, output_target
+            elementBuilder("span", "likes mx-3", parseInt(mLikes), "likes", i, "likeContainer" + i);
+
+            // add event listener to each button
+            document.getElementById("likeButton" + i).addEventListener("click", function(){
+                increaseLikes("likes" + i);
+            });
         };
         appendix();
     }
@@ -74,3 +114,7 @@ const movieGallery = array => {
 
 movieGallery(moviesData); //call function
 
+
+// document.querySelectorAll(".likeBtn").addEventListener("click",(function(){
+
+// })();
