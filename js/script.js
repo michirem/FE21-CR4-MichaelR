@@ -61,54 +61,9 @@ const increaseLikes = elementId => {
 // 1.6 sort button function
 const sortFunction = (baseArray, classOfElementToSortBy, classOfElementToBeSorted) => {
     for (let i = 0; i < baseArray.length; i++) {
-        let nrOfLikes = document.querySelectorAll(classOfElementToSortBy)[i].innerHTML;
-        document.getElementsByClassName(classOfElementToBeSorted)[i].style.order = -nrOfLikes;
+        let nrOfLikes = document.querySelectorAll(classOfElementToSortBy)[i].innerHTML; //fetch no. of likes
+        document.getElementsByClassName(classOfElementToBeSorted)[i].style.order = -nrOfLikes; //set style: order acc. to no. of likes
     };
-
-    // let likesArray = new Array();
-    // for (let i = 0; i < baseArray.length; i++) {
-    //     let nrOfLikes = document.querySelectorAll(classOfElementToSortBy)[i].innerHTML;
-    //     likesArray.push(nrOfLikes);
-    // }
-    // console.log(likesArray);
-    // let containerArray = new Array();
-    // let listOfElements = document.getElementsByClassName(classOfElementToBeSorted);
-    // for (let i = 0; i < listOfElements.length; i++) {
-    //     let idsOfElements = listOfElements[i].id;
-    //     containerArray.push(idsOfElements);
-    // }
-    // console.log(containerArray);
-    // for (let i = likesArray.length - 1; i >= 0; i--) {
-    //     for (let j = likesArray.length - 1; i >= 0; j--) {
-    //         let inputA = likesArray[j];
-    //         console.log(inputA);
-    //         let inputB = likesArray[j - 1];
-    //         console.log(inputB);
-    //         let divMovieA = document.getElementById(containerArray[j]);
-    //         let divMovieB = document.getElementById(containerArray[j - 1]);
-    //         if (inputA > inputB) {
-    //             let tmp1 = inputA;
-    //             inputA = inputB;
-    //             inputB = tmp1;
-    //             let tmp2 = divMovieA.innerHTML;
-    //             divMovieA.innerHTML = divMovieB.innerHTML;
-    //             divMovieB.innerHTML = tmp2;
-    //         }
-    //     }
-    // }
-    // let inputA = document.getElementById(idToSortBy + j).value;
-    // let inputB = document.getElementById(idToSortBy + (j+1)).value;
-    // for (let i = 0; i < array.length; i++) {
-    //     for (let j = 0; j < array.length; j++) {
-    //         let divMovieA = document.getElementById(idToSort + j);
-    //         let divMovieB = document.getElementById(idToSort + (j+1));
-    //         if (inputB > inputA) {
-    //             let tmp = divMovieA.innerHTML;
-    //             divMovieA.innerHTML = divMovieB.innerHTML;
-    //             divMovieB.innerHTML = tmp;
-    //         }
-    //     }
-    // }
 };
 
 // 2.0 Page Creation
