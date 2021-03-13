@@ -4,34 +4,34 @@ console.table(moviesData);
 
 // function to build containers
 const containerBuilder = (containerType, classes, array_index, id, output_target) => {
-    let container = document.createElement(containerType);
-    container.setAttribute("id", id + [array_index]);
-    container.className = classes;
-    console.log(container);
+    let container = document.createElement(containerType); // create container type
+    container.setAttribute("id", id + [array_index]); // set id of container
+    container.className = classes; // set classes of container
     console.log("Container " + container + " of index " + array_index + " built successfully");
-    document.getElementById(output_target).appendChild(container);
+    document.getElementById(output_target).appendChild(container); // append to output target
 };
 
 // function to build elements with text
 const elementBuilder = (elementType, classes, content, id, array_index, output_target) => {
     let elementT = document.createElement(elementType); // create element type
     elementT.className = classes; // assign classes
-    elementT.setAttribute("id", id + [array_index]);
+    elementT.setAttribute("id", id + [array_index]); // set id of element
     let elementContent = document.createTextNode(content); // create text node
     elementT.appendChild(elementContent); // append text node
     console.log("Element " + elementType + " built successfully");
-    document.getElementById(output_target).appendChild(elementT);
+    document.getElementById(output_target).appendChild(elementT); // append to output target
+    console.log("Element " + elementType + " " + id + [array_index] + " appended to " + output_target);
 };
 
 // function to build img elements
 const imgBuilder = (src, classes, output_target) => {
-    let newImg = document.createElement("img");
-    newImg.className = classes;
-    newImg.src = src;
-    newImg.alt = "image";
-    console.log(newImg);
+    let newImg = document.createElement("img"); // create img
+    newImg.className = classes; // assign classes
+    newImg.src = src; // set source
+    newImg.alt = "image"; // alt = image
     console.log("Img built successfully");
-    document.getElementById(output_target).appendChild(newImg);
+    document.getElementById(output_target).appendChild(newImg); // append to output target
+    console.log("Img " + newImg + " appended to " + output_target);
 };
 
 // function to build button
@@ -43,6 +43,7 @@ const btnBuilder = (classes, content, id, array_index, output_target) => {
     button.appendChild(buttonContent); // append text node
     console.log("Button built successfully");
     document.getElementById(output_target).appendChild(button);
+    console.log("Button " + button + " " + id + [array_index] + " appended to " + output_target);
 };
 
 // like button function
@@ -52,7 +53,7 @@ const increaseLikes = elementId => {
     numberOfLikes++;
     console.log(numberOfLikes);
     counter.innerHTML = numberOfLikes;
-    console.log(elementId + " activated")
+    console.log("like button " + elementId + " activated")
 };
 
 // function to build movie gallery
