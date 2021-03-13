@@ -153,7 +153,7 @@ const movieGallery = array => {
 
             // info div inside movie div
             // Arguments: containerType, classes, array_index, id, output_target
-            containerBuilder("div", "col-6 d-flex flex-column px-0", i, "movieDetails", "movie" + i);
+            containerBuilder("div", "col-6 d-flex flex-column px-0 py-2", i, "movieDetails", "movie" + i);
 
             // movie name in info div
             // Arguments: elementType, classes, content, id, array_index, output_target
