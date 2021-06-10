@@ -10,9 +10,8 @@ https://github.com/JohnDoe/repositoryname.git
     "movieName": "A Star is Born",
     "image": "img/star.jpg",
     "description": "Short description",
-    "likes": 0,
-   
-  }
+    "likes": 0
+}
  
 - Correct creation of the HTML/Bootstrap structure based on JavaScript objects. It should be shown on the screen the movie name, a short description, movie poster according to the provided design. Feel free to expand the information as: genre, release date, etc...
 - As it is in the example template, there should be a button to every movie that calls a function and it should increment the movie’s “likes” property on every button click.
